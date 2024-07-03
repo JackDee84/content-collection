@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import { getCollection } from "astro:content";
+
+import PostCard from "../components/PostCard.astro"
+const posts = await getCollection("posts");
+
+---
+<BaseLayout>
+
+		<div class="homepage">
+			<div>
+				<h1>Content Collection Overview</h1>
+			</div>
+			<div class="post-wrapper">
+				<h2>Posts</h2>
+				<div>{posts.slice(0,5).map((p) => <PostCard post={p} /> )}</div>
+			</div>
+			<!-- Hier wird mit {posts.slice(0, 3).map((postItem) => <PostCard post={postItem} die Postwerte an PostCard weitergegeben. -->
+			<!--  slice verwenden und die Werte von 0 bis 3 wieder zu geben als vorschau -->
+		</div>
+		
+
+
+</BaseLayout>
+
+<!-- 25 min   https://www.youtube.com/watch?v=Fcw4c3wzm7I -->
